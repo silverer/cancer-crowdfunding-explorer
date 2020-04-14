@@ -1,0 +1,96 @@
+cancer_type,collapsed_cancer_type,insurance_type,collapsed_insurance_type,negate,financial_distress,oop_type,collapsed_oop_type,cancer_type_recode,cancer_cat_recode,tx_type,collapsed_tx_type,clin_trial,clin_trial_recode,complementary,complementary_recode,battle,brave,self_reliance,journey,journey_recode,thank,exclude,nice,reciprocity
+breast,breast,medi(.|)care,medicare,no,financial distress,deduct.ble,deductible,breast,breast,surgery,surgery,clinical trial,1,complimentary medicine,1,battle,brave,hard(.|)working,journey,1,thank,and,nicest,selfless
+leukemia,blood,medi(.|)caid,medicaid,doesn't have,financial burden,transport,transportation,leukemia,blood,chemo,chemo,drug trial,1,holistic medicine,1,battling,courag,independ.nt,,,appreciate,to,kindest,most generous
+lung,lung,medi(.|)cade,medicaid,lost,financial toll,insur.nce premium,premium,lung,lung,chemo(.|)therapy,chemo,experimental trial,1,complementary medicine,1,battled,valient,self(.|)reli.n,,,grateful,the,loving,most giving
+colon,gastrointestinal,insurance,insurance,don't have,economic burden,out(.|)of(.|)pocket,out of pocket,colon,colorectal,immuno,immunotherapy,,,homeopath,1,fight,strong,independ.nt,,,greatful,this,sweetest,gave to charity
+lymphoma,blood,insurence,insurance,does not have,economic distress,co(.|)pay,co-pay,lymphoma,blood,immuno(.|)therapy,immunotherapy,,,alternative medicine,1,fighting,strength,stubborn,,,gratitude,these,caring,given to charity
+brain,brain,obama(.|)care,affordable care act,do not have,,co(.|)payment,co-pay,brain,brain,imuno(.|)therapy,immunotherapy,,,wholistic medicine,1,fought,hero,proud,,,thanks,of,warmest,give to charity
+kidney,urologic,affordable care act,affordable care act,lacks,,transportation,transportation,kidney,kidney,targeted therapy,targeted therapy,,,,,beat,valiant,determined,,,appreciative,in,,donated to charity
+sarcoma,sarcoma,the aca ,affordable care act,lacking,,medical bill,medical bills,sarcoma,sarcoma,gene therapy,gene therapy,,,,,beating,,resilli.nt,,,apreciative,for,,donate to charity
+stomach,gastrointestinal,tri(.|)care,public health insurance,without,,hospital bill,hospital bills,stomach,gastric,hysterectomy,surgery,,,,,war against,,resili.nt,,,apreciate,with,,support other
+pancreatic,gastrointestinal,champus,public health insurance,,,debt,debt,pancreatic,pancreatic,oophorectomy,surgery,,,,,war with,,tenacity,,,your generosity,so,,supported other
+liver,gastrointestinal,champva,public health insurance,,,lost wage,lost wages,liver,gastrointestinal,colectomy,surgery,,,,,kick cancer(.|)s .ss,,never ask for,,,,i,,supports other
+ovarian,gynecologic,underinsure,underinsured,,,isn(.|)t covered,not covered,ovarian,gynecologic,radiation,radiation,,,,,kick cancer(.|)s butt,,never asks for,,,,me,,volunteers for
+cervical,gynecologic,under(.|)insure,underinsured,,,won(.|)t cover,not covered,cervical,gynecologic,hormone therapy,hormone therapy,,,,,warrior,,not ask for,,,,my,,volunteered for
+bone,bone,under-insure,underinsured,,,doesn(.|)t cover,not covered,bone,bone,mastectomy,surgery,,,,,fighter,,never asked for,,,,mine,,volunteer for
+melanoma,melanoma,no health ins.r.nce,uninsured,,,not cover,not covered,melanoma,melanoma,lumpectomy,surgery,,,,,war on,,wouldn(.|)t ask for,,,,she,,put others first
+glioblastoma,brain,doesn(.|)t have ins.r.nce,uninsured,,,not covered,not covered,glioblastoma,brain,surgically removed,surgery,,,,,,,won(.|)t ask for,,,,her,,puts others first
+prostate,urologic,don(.|)t  have health ins.r.nce,uninsured,,,aren(.|)t covered,not covered,prostate,urologic,\w+[a-z]ectomy,surgery,,,,,,,doesn(.|)t ask for,,,,hers,,dedicated to community service
+myeloma,blood,no ins.r.nce,uninsured,,,weren(.|)t covered,not covered,myeloma,blood,,,,,,,,,don(.|)t ask for,,,,him,,dedicated to helping other
+thyroid,thyroid,doesn(.|)t have health ins.r.nce,uninsured,,,won(.|)t be covered,not covered,thyroid,thyroid,,,,,,,,,,,,,his,,shirt off his back
+esophageal,gastrointestinal,un.nsured,uninsured,,,wasn(.|)t covered,not covered,esophageal,esophageal,,,,,,,,,,,,,their,,shirt off her back
+uterine,gynecologic,don(.|)t  have ins.r.nce,uninsured,,,isn(.|)t enough to cover,not covered,uterine,gynecologic,,,,,,,,,,,,,theirs,,shirt off their back
+throat cancer,head and neck,not insured,uninsured,,,not enough to cover,not covered,throat cancer,head and neck,,,,,,,,,,,,,them,,unselfish
+neuroblastoma,brain,,,,,not be covered,not covered,neuroblastoma,brain,,,,,,,,,,,,,we,,served his country
+uterus,gynecologic,,,,,haven(.|)t been covered,not covered,uterus,gynecologic,,,,,,,,,,,,,our,,served her country
+tongue,head and neck,,,,,not been covered,not covered,tongue,head and neck,,,,,,,,,,,,,as,,served her community
+testicular,urologic,,,,,hasn(.|)t covered,not covered,testicular,urologic,,,,,,,,,,,,,was,,served his community
+colorectal,gastrointestinal,,,,,didn(.|)t cover,not covered,colorectal,colorectal,,,,,,,,,,,,,is,,serving his country
+bladder,urologic,,,,,isn(.|)t covered,not covered,bladder,urologic,,,,,,,,,,,,,were,,serving her country
+astrocytoma,brain,,,,,won(.|)t cover,not covered,astrocytoma,brain,,,,,,,,,,,,,but,,serving her community
+renal cell,urologic,,,,,,,renal cell,urologic,,,,,,,,,,,,,an,,serving his community
+squamous cell,squamous_NOS,,,,,,,squamous cell,squamous_NOS,,,,,,,,,,,,,do,,serve my community
+pancreas,gastrointestinal,,,,,,,pancreas,pancreatic,,,,,,,,,,,,,have,,serve my country
+breat,breast,,,,,,,breat,breast,,,,,,,,,,,,,has,,serving my community
+medulloblastoma,brain,,,,,,,medulloblastoma,brain,,,,,,,,,,,,,had,,serving my country
+endometrial,gynecologic,,,,,,,endometrial,gynecologic,,,,,,,,,,,,,from,,volunteering for
+rectal,gastrointestinal,,,,,,,rectal,colorectal,,,,,,,,,,,,,will,,dedicated her life
+skin cancer,melanoma,,,,,,,skin cancer,melanoma,,,,,,,,,,,,,would,,dedicated his life
+head and neck,head and neck,,,,,,,head and neck,head and neck,,,,,,,,,,,,,at,,dedicated their life
+cervix,gynecologic,,,,,,,cervix,gynecologic,,,,,,,,,,,,,in,,dedicated my life
+gallbladder,gastrointestinal,,,,,,,gallbladder,gastrointestinal,,,,,,,,,,,,,you,,volunteering for
+adenocarcinoma,adeno_NOS,,,,,,,adenocarcinoma,adeno_NOS,,,,,,,,,,,,,your,,helping other
+gastric,gastrointestinal,,,,,,,gastric,gastric,,,,,,,,,,,,,yours,,helped other
+retinoblastoma,eye,,,,,,,retinoblastoma,eye,,,,,,,,,,,,,ours,,help other
+testicle,urologic,,,,,,,testicle,urologic,,,,,,,,,,,,,there,,volunteers at
+esophagus,gastrointestinal,,,,,,,esophagus,esophageal,,,,,,,,,,,,,did,,volunteered at
+ductal carcinoma,breast,,,,,,,ductal carcinoma,breast,,,,,,,,,,,,,does,,volunteered
+renal,urologic,,,,,,,renal,kidney,,,,,,,,,,,,,,,volunteering
+bile duct,gastrointestinal,,,,,,,bile duct,gastrointestinal,,,,,,,,,,,,,,,dedicated to
+mastectomy,breast,,,,,,,mastectomy,breast,,,,,,,,,,,,,,,served our country
+neuroendocrine,neuroendocrine,,,,,,,neuroendocrine,neuroendocrine,,,,,,,,,,,,,,,serving our country
+peritoneal,peritoneal,,,,,,,peritoneal,peritoneal,,,,,,,,,,,,,,,served our community
+blood cancer,blood,,,,,,,blood cancer,blood,,,,,,,,,,,,,,,serving our community
+eye cancer,eye,,,,,,,eye cancer,eye,,,,,,,,,,,,,,,serve our community
+intestinal,gastrointestinal,,,,,,,intestinal,gastrointestinal,,,,,,,,,,,,,,,serve our country
+histiocytosis,histiocytosis,,,,,,,histiocytosis,histiocytosis,,,,,,,,,,,,,,,serve the country
+cerebral,brain,,,,,,,cerebral,brain,,,,,,,,,,,,,,,serve the community
+gastrointestin,gastrointestinal,,,,,,,gastrointestin,gastrointestinal,,,,,,,,,,,,,,,serving the country
+appendix cancer,appendix,,,,,,,appendix cancer,appendix,,,,,,,,,,,,,,,serving the community
+larynx,head and neck,,,,,,,larynx,head and neck,,,,,,,,,,,,,,,served the country
+luekemia,blood,,,,,,,luekemia,blood,,,,,,,,,,,,,,,served the community
+ovaries,gynecologic,,,,,,,ovaries,gynecologic,,,,,,,,,,,,,,,dedicated his career
+carcinoid,neuroendocrine,,,,,,,carcinoid,neuroendocrine,,,,,,,,,,,,,,,dedicated her career
+lukemia,blood,,,,,,,lukemia,blood,,,,,,,,,,,,,,,dedicated my career
+germ cell tumor,germ cell,,,,,,,germ cell tumor,germ cell,,,,,,,,,,,,,,,devoted her time
+rectum,gastrointestinal,,,,,,,rectum,colorectal,,,,,,,,,,,,,,,volunteer work
+laryngeal,head and neck,,,,,,,laryngeal,head and neck,,,,,,,,,,,,,,,devoted his time
+desmoplastic,sarcoma,,,,,,,desmoplastic,sarcoma,,,,,,,,,,,,,,,helping people
+wilms tumor,urologic,,,,,,,wilms tumor,kidney,,,,,,,,,,,,,,,helped people
+seminoma,urologic,,,,,,,seminoma,urologic,,,,,,,,,,,,,,,dedicated his time
+ependymoma,brain,,,,,,,ependymoma,brain,,,,,,,,,,,,,,,dedicated her time
+germ cell cancer,germ cell,,,,,,,germ cell cancer,germ cell,,,,,,,,,,,,,,,dedicated my time
+thymoma,brain,,,,,,,thymoma,brain,,,,,,,,,,,,,,,devoted my time
+urethra,urologic,,,,,,,urethra,urologic,,,,,,,,,,,,,,,put others before
+urethral,urologic,,,,,,,urethral,urologic,,,,,,,,,,,,,,,put others' needs
+adrenocortical,urologic,,,,,,,adrenocortical,urologic,,,,,,,,,,,,,,,serving the church
+peritoneum,peritoneal,,,,,,,peritoneum,peritoneal,,,,,,,,,,,,,,,served the church
+nueroblastoma,brain,,,,,,,nueroblastoma,brain,,,,,,,,,,,,,,,serves the church
+lumpectomy,breast,,,,,,,lumpectomy,breast,,,,,,,,,,,,,,,served his church
+myloma,blood,,,,,,,myloma,blood,,,,,,,,,,,,,,,served her church
+langerhans,histiocytosis,,,,,,,langerhans,histiocytosis,,,,,,,,,,,,,,,served our church
+ductile carcinoma,breast,,,,,,,ductile carcinoma,breast,,,,,,,,,,,,,,,serving his church
+oligodendroglioma,brain,,,,,,,oligodendroglioma,brain,,,,,,,,,,,,,,,served his church
+wilm's tumor,urologic,,,,,,,wilm's tumor,kidney,,,,,,,,,,,,,,,serves his church
+penile,urologic,,,,,,,penile,urologic,,,,,,,,,,,,,,,serving her church
+ductal carcinoma in situ,breast,,,,,,,ductal carcinoma in situ,breast,,,,,,,,,,,,,,,served her church
+clear cell,clear_cell_NOS,,,,,,,clear cell,clear_cell_NOS,,,,,,,,,,,,,,,serves her church
+mullerian,gynecologic,,,,,,,mullerian,gynecologic,,,,,,,,,,,,,,,veteran
+non-hodgkins lymphoma,blood,,,,,,,non-hodgkins lymphoma,blood,,,,,,,,,,,,,,,missionary
+non hodgkins lymphoma,blood,,,,,,,non hodgkins lymphoma,blood,,,,,,,,,,,,,,,
+neurblastoma,brain,,,,,,,neurblastoma,brain,,,,,,,,,,,,,,,
+neruoblastoma,brain,,,,,,,neruoblastoma,brain,,,,,,,,,,,,,,,
+rhabdomyosaroma,sarcoma,,,,,,,rhabdomyosaroma,sarcoma,,,,,,,,,,,,,,,
+tyroid,thyroid,,,,,,,tyroid,thyroid,,,,,,,,,,,,,,,
+nuroblastoma,brain,,,,,,,nuroblastoma,brain,,,,,,,,,,,,,,,
+nonhodgkins lymphoma,blood,,,,,,,nonhodgkins lymphoma,blood,,,,,,,,,,,,,,,

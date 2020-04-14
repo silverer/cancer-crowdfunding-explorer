@@ -1,0 +1,46 @@
+variable_call,variable_label,pretty_label
+DP05_0001E,total_population,Total Population
+DP05_0003PE,percent_female,% Women
+DP03_0009PE,unemployment_rate,Unemployment Rate
+DP03_0062E,median_income,Median Income
+DP03_0119PE,percent_poverty,Poverty Rate
+DP03_0099PE,no_health_insurance,% Without Health Insurance
+DP03_0098PE,public_health_insurance,% With Public Health Insurance
+DP03_0097PE,private_health_insurance,% With Private Health Insurance
+DP04_0046PE,home_owners,Home Ownership Rate
+DP04_0078PE,percent_1_1.5_per_room,
+DP04_0079PE,more_1.5_per_room,
+DP04_0047PE,renter_occupied,% of Households Occupied by Renter
+DP04_0058PE,no_car,% of Households Without a Vehicle
+DP02_0009PE,single_mom,% of Households with Mom and no Husband
+DP02_0007PE,single_dad,% of Households with Dad and no Wife
+DP04_0089E,home_median_value,Median Property Value
+DP02_0066PE,ed_percent_highschool,% With at Least High School Education
+DP02_0067PE,ed_percent_bachelors,
+DP02_0152PE,has_internet,% With Internet
+DP03_0052PE,percent_less_10k,
+DP03_0053PE,percent_10k_15k,
+DP03_0054PE,percent_15k_25k,
+DP03_0055PE,percent_25k_35k,
+DP05_0037PE,percent_white,% White
+DP05_0005PE,percent_under_5,
+DP05_0006PE,percent_5_to_9,
+DP05_0007PE,percent_10_to_14,
+DP05_0008PE,percent_15_to_19,
+DP05_0009PE,percent_20_to_24,
+DP05_0010PE,percent_25_to_34,
+DP05_0011PE,percent_35_to_44,
+DP05_0012PE,percent_45_to_54,
+DP05_0013PE,percent_55_to_59,
+DP05_0014PE,percent_60_to_64,
+DP05_0015PE,percent_65_to_74,
+DP05_0016PE,percent_75_to_84,
+DP05_0017PE,percent_85_over,
+DP05_0024PE,percent_65_and_over,
+DP05_0021PE,percent_18_and_over,
+DP05_0018E,median_age,Median Age
+DP05_0038PE,percent_black,% Black 
+DP05_0071PE,percent_hispanic_latino,% Hispanic or Latino
+DP03_0072PE,percent_public_assist,% Receiving Public Assistance
+DP03_0027PE,percent_mgmt_art_sci,"% in Management, Science, Arts Occ."
+DP04_0003PE,percent_vacant_units,% Vacant Housing Units

@@ -1,0 +1,30 @@
+name: gfm
+channels:
+  - anaconda
+  - conda-forge
+  - conda-forge/label/cf201901
+  - plotly
+dependencies:
+  - python
+  - pandas
+  - matplotlib
+  - beautifulsoup4
+  - requests
+  - numpy
+  - lxml
+  - ipython
+  - ipykernel
+  - jupyter
+  - tqdm
+  - plotly=4.1.0
+  - geopandas
+  - plotly-geo
+  - scikit-learn
+  - selenium
+  - ftfy
+  - pip
+  - scipy
+  - statsmodels
+  - geocoder
+  - pip:
+    - PyQt5==5.8.2

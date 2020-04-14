@@ -1,0 +1,37 @@
+group1,group2,meandiff,p-adj,lower,upper,reject,omnibus,sum_sq,df,F,PR(>F),outcome
+1 (least deprived),2,-1388.973,0.001,-1582.2939,-1195.6521,True,ndi_quantile_f,102533210225.9526,3.0,255.01694466232016,4.520058793685194e-165,raised_amnt
+1 (least deprived),3,-1622.365,0.001,-1826.1631,-1418.567,True,Residual,19260890457213.633,143715.0,,,raised_amnt
+1 (least deprived),4 (most deprived),-2539.2014,0.001,-2836.1314,-2242.2714,True,,,,,,raised_amnt
+2,3,-233.392,0.0258,-447.0084,-19.7757,True,,,,,,raised_amnt
+2,4 (most deprived),-1150.2284,0.001,-1453.9811,-846.4756,True,,,,,,raised_amnt
+3,4 (most deprived),-916.8364,0.001,-1227.3624,-606.3103,True,,,,,,raised_amnt
+1 (least deprived),2,-1301.0991,0.001,-1671.0537,-931.1445,True,ndi_quantile_f,84550596513.1963,3.0,58.768746198495016,5.845942527375949e-38,winsorized_goal
+1 (least deprived),3,-1053.1752,0.001,-1443.3211,-663.0292,True,Residual,67320131047460.875,140377.0,,,winsorized_goal
+1 (least deprived),4 (most deprived),-2602.8337,0.001,-3170.9782,-2034.6893,True,,,,,,winsorized_goal
+2,3,247.9239,0.4049,-161.1732,657.0211,False,,,,,,winsorized_goal
+2,4 (most deprived),-1301.7346,0.001,-1883.0562,-720.4131,True,,,,,,winsorized_goal
+3,4 (most deprived),-1549.6586,0.001,-2144.034,-955.2831,True,,,,,,winsorized_goal
+1 (least deprived),2,23.2953,0.001,8.464,38.1266,True,ndi_quantile_f,34791124.91878337,3.0,15.586114703924457,3.9274500844947203e-10,shares
+1 (least deprived),3,35.6946,0.001,20.0575,51.3318,True,Residual,100778041264.90182,135443.0,,,shares
+1 (least deprived),4 (most deprived),42.8618,0.001,20.0166,65.7069,True,,,,,,shares
+2,3,12.3993,0.2109,-4.0104,28.8091,False,,,,,,shares
+2,4 (most deprived),19.5665,0.1374,-3.8143,42.9473,False,,,,,,shares
+3,4 (most deprived),7.1672,0.8527,-16.7329,31.0672,False,,,,,,shares
+1 (least deprived),2,-10.6663,0.001,-12.8835,-8.4491,True,ndi_quantile_f,5027428.960987,3.0,99.63183008071512,2.0280715029509378e-64,num_contributors
+1 (least deprived),3,-11.276,0.001,-13.6145,-8.9376,True,Residual,2302997521.912023,136920.0,,,num_contributors
+1 (least deprived),4 (most deprived),-17.9649,0.001,-21.3853,-14.5445,True,,,,,,num_contributors
+2,3,-0.6097,0.9,-3.0632,1.8438,False,,,,,,num_contributors
+2,4 (most deprived),-7.2986,0.001,-10.7986,-3.7985,True,,,,,,num_contributors
+3,4 (most deprived),-6.6888,0.001,-10.2669,-3.1107,True,,,,,,num_contributors
+1 (least deprived),2,-0.0344,0.001,-0.0398,-0.0289,True,ndi_quantile_f,90.39384801056758,3.0,292.5584242535197,2.4175599155804265e-189,percent_goal
+1 (least deprived),3,-0.055,0.001,-0.0607,-0.0493,True,Residual,14407.18932759078,139886.0,,,percent_goal
+1 (least deprived),4 (most deprived),-0.0721,0.001,-0.0805,-0.0638,True,,,,,,percent_goal
+2,3,-0.0207,0.001,-0.0267,-0.0147,True,,,,,,percent_goal
+2,4 (most deprived),-0.0378,0.001,-0.0463,-0.0292,True,,,,,,percent_goal
+3,4 (most deprived),-0.0171,0.001,-0.0259,-0.0084,True,,,,,,percent_goal
+1 (least deprived),2,-4.6933,0.001,-6.4304,-2.9563,True,ndi_quantile_f,1603986.1858363464,3.0,51.79504046126787,1.8960566408138216e-33,avg_contribution
+1 (least deprived),3,-6.2687,0.001,-8.1007,-4.4367,True,Residual,1413304946.4818459,136913.0,,,avg_contribution
+1 (least deprived),4 (most deprived),-11.1628,0.001,-13.8423,-8.4832,True,,,,,,avg_contribution
+2,3,-1.5753,0.1513,-3.4974,0.3468,False,,,,,,avg_contribution
+2,4 (most deprived),-6.4694,0.001,-9.2114,-3.7275,True,,,,,,avg_contribution
+3,4 (most deprived),-4.8941,0.001,-7.6972,-2.0909999999999997,True,,,,,,avg_contribution

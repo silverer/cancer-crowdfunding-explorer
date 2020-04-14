@@ -1,0 +1,66 @@
+orig_varname_w_val,fmt_varname_w_val,fmt_ref,order
+Intercept,Intercept,,0
+ndi_quantile_f2,NDI Quartile 2,"(ref: NDI Quartile 1, Least Deprived)",1
+ndi_quantile_f3,NDI Quartile 3,"(ref: NDI Quartile 1, Least Deprived)",2
+ndi_quantile_f4 (most deprived),NDI Quartile 4 (Most Deprived),"(ref: NDI Quartile 1, Least Deprived)",3
+nice_is_mentionedTrue,Warmth is Mentioned,(ref: Warmth Not Mentioned),4
+thank_is_mentionedTrue,Gratitude is Mentioned,(ref: Gratitude Not Mentioned),5
+self_reliance_is_mentionedTrue,Self-Reliance is Mentioned,(ref: Self-Reliance Not Mentioned),6
+ctype_is_mentionedTrue,Cancer Type is Mentioned,(ref: Cancer Type Not Mentioned),7
+tx_type_is_mentionedTrue,Treatment Type is Mentioned,(ref: Treatment Type Not Mentioned),8
+insurance_type_is_mentionedTrue,Insurance is Mentioned,(ref: Insurance Not Mentioned),9
+oop_type_is_mentionedTrue,Out-of-Pocket Cost is Mentioned,(ref: Out-of-Pocket Cost Not Mentioned),10
+battle_is_mentionedTrue,Militaristic Metaphors,(ref: Militaristic Metaphos Not Used),11
+brave_is_mentionedTrue,Bravery is Mentioned,(ref: Bravery Not Mentioned),12
+year_f[T.2011],2011,(ref: 2010),13
+year_f[T.2012],2012,(ref: 2010),14
+year_f[T.2013],2013,(ref: 2010),15
+year_f[T.2014],2014,(ref: 2010),16
+year_f[T.2015],2015,(ref: 2010),17
+year_f[T.2016],2016,(ref: 2010),18
+year_f[T.2017],2017,(ref: 2010),19
+year_f[T.2018],2018,(ref: 2010),20
+year_f[T.2019],2019,(ref: 2010),21
+winsorized_goal,Goal Amount,,22
+shares,Number of Shares,,23
+num_contributors,Number of Contributors,,24
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,
+,,,

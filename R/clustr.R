@@ -1,12 +1,12 @@
 library(tidyverse)
 library(dplyr)
-library(mclust)
 library(stats)
+#Change this to local filepath
+setwd("~/Documents/cancer-crowdfunding-explorer")
 
-setwd("~/Documents/gfm")
-#NOTE: Run get_census_data.ipynb first to generate the acs_five_year_est_v1.csv file
 census_data_path <- "data/census/"
-df <- read.csv(paste(census_data_path, "acs_five_year_est_v1.csv", sep=''))
+#NOTE: Run get_census_data.ipynb first to generate the acs_five_year_est.csv file
+df <- read.csv(paste(census_data_path, "acs_five_year_est.csv", sep=''))
 #citations for PCA w/one factor & included vars: 
 #https://www.ncbi.nlm.nih.gov/pubmed/17031568
 #https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3261293/
@@ -22,7 +22,7 @@ pca_vars <- c("unemployment_rate", "percent_poverty", "no_health_insurance",
               "percent_single_parent", "percent_less_35k", "percent_public_assist",
               "percent_mgmt_art_sci")
 #select variables to include in pca
-pca_df <- select(df, pca_vars)
+pca_df <- dplyr::select(df, pca_vars)
 #convert percent estimates to actual percents
 pca_df <- pca_df/100
 
@@ -58,7 +58,7 @@ importance <- result$importance
 variance_exp <- importance[3, 1]
 
 ##Save results of full and reduced PCA
-sink(paste(census_data_path, 'PCA_results.txt', sep=''))
+sink(paste(census_data_path, 'PCA_results_TEST.txt', sep=''))
 cat('Full PCA\n')
 f_loadings_full
 cat('Full PCA percent of variance explained: ')
@@ -82,6 +82,6 @@ for(i in(1:length(vars))){
   print(factor_loadings[vars[i], 'PC1'])
   new_df[new_col] <- new_df[vars[i]] * factor_loadings[vars[i], 'PC1']
 }
-write.csv(new_df, paste(census_data_path, 'census_w_factor_weights.csv', sep=''))
+write.csv(new_df, paste(census_data_path, 'census_w_factor_weights_TEST.csv', sep=''))
 
 

@@ -61,6 +61,3 @@ Note that you will need to add your own Census API key to ```src/tokens.py``` (s
 * Han Q. Truong
 * Elisabeth R. Silver
 * Sassan Ostvar
-
-
-### References

@@ -1,1 +1,13 @@
 src/hire_tokens.py
+**/.ipynb_checkpoints/
+.DS_Store
+**/.DS_Store
+
+**/*.pyc
+
+notebooks/*.csv
+notebooks/*.xlsx
+
+data/gfm/*.xlsx
+data/geolocations/*.xlsx
+data/geolocation/*.csv

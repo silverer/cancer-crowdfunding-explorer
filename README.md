@@ -58,12 +58,9 @@ Note that you will need to add your own Census API key to ```src/tokens.py``` (s
 
 ### Authors
 
-* Han Truong
-* Elisabeth Silver
+* Han Q. Truong
+* Elisabeth R. Silver
 * Sassan Ostvar
-
-### License
-
 
 
 ### References

@@ -23,7 +23,7 @@ Our process to assemble the crowdfunding dataset in Silver et al (2020) can be r
 
 This script gathers the campaigns included in GoFundMe.com's sitemap (https://www.gofundme.com/sitemap.xml). The resulting sample is complemented by the historical data stored on the Internet Archive (Archive.org) by querying the archive's API (https://archive.org/services/docs/api/).
 
-Outputs will be stored in folders outside of the git repository. For cleaning, you will need to specify the path to the resulting scraped .csv files in ```src/data_io.py``` 
+Outputs will be stored in folders outside of the git repository. For cleaning, you will need to specify the path to the resulting scraped .csv files in ```src/data_io.py```
 
 **Important note: some variation is expected in the resulting sample depending on when data are retrieved.**
 
@@ -58,6 +58,6 @@ Note that you will need to add your own Census API key to ```src/tokens.py``` (s
 
 ### Authors
 
-* Han Q. Truong
-* Elisabeth R. Silver
-* Sassan Ostvar
+* Han Q. Truong (https://github.com/ryanhantruong)
+* Elisabeth R. Silver (https://github.com/silverer)
+* Sassan Ostvar (https://github.com/sostvar)

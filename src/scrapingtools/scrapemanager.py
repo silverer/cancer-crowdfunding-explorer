@@ -20,12 +20,7 @@ from .utils import log_message as print
 from . import utils as utils
 from . import waybackinterface as wbi
 from . import scrapers as scrapers
-from . import renderercontainer as rederercontainer
-
-# import .utils as utils
-# import waybackinterface as wbi
-# import scrapers as scrapers
-# import renderercontainer as rederercontainer
+from . import renderercontainer as renderercontainer
 
 # defaults
 OUTPATH = Path.cwd().parent / "scrape_output"

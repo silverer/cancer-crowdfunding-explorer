@@ -1,0 +1,72 @@
+,variable,coef,std err,z,p_value,coef_low_ci,coef_up_ci,percent_diff,percent_diff_lower,percent_diff_upper,percent_diff_frmt,percent_diff_lower_frmt,percent_diff_upper_frmt,fmt_coef,pct_ci_frmt,var_val,var_name,var_name_w_val,orig_varname_w_val,fmt_varname_w_val,fmt_ref,order,varname_w_ref
+0,Intercept,7.614,0.32899999999999996,23.113000000000003,0.0,6.968,8.26,2025.367377882307,1061.0964320642615,3865.0941004810525,202536.74%,106109.64%,386509.41%,7.614 (0.329),"202536.74%
+(106109.64%, 386509.41%)",,Intercept,Intercept,Intercept,Intercept,,0.0,
+1,ndi_quantile_f[T.2],-0.1437,0.006,-22.994,0.0,-0.156,-0.131,-0.13385244664753182,-0.14444080962898154,-0.12278222560895646,-13.39%,-14.44%,-12.28%,-0.144 (0.006),"-13.39%
+(-14.44%, -12.28%)",2,ndi_quantile_f,ndi_quantile_f2,ndi_quantile_f2,NDI Quartile 2,"(ref: NDI Quartile 1, Least Deprived)",1.0,"NDI Quartile 2
+(ref: NDI Quartile 1, Least Deprived)"
+2,ndi_quantile_f[T.3],-0.2002,0.006999999999999999,-30.357,0.0,-0.213,-0.187,-0.1814329766991103,-0.19184386278351162,-0.17055626361459608,-18.14%,-19.18%,-17.06%,-0.200 (0.007),"-18.14%
+(-19.18%, -17.06%)",3,ndi_quantile_f,ndi_quantile_f3,ndi_quantile_f3,NDI Quartile 3,"(ref: NDI Quartile 1, Least Deprived)",2.0,"NDI Quartile 3
+(ref: NDI Quartile 1, Least Deprived)"
+3,ndi_quantile_f[T.4 (most deprived)],-0.3021,0.01,-31.3,0.0,-0.321,-0.28300000000000003,-0.26073586522038994,-0.27457674900985884,-0.24648021214028282,-26.07%,-27.46%,-24.65%,-0.302 (0.010),"-26.07%
+(-27.46%, -24.65%)",4 (most deprived),ndi_quantile_f,ndi_quantile_f4 (most deprived),ndi_quantile_f4 (most deprived),NDI Quartile 4 (Most Deprived),"(ref: NDI Quartile 1, Least Deprived)",3.0,"NDI Quartile 4 (Most Deprived)
+(ref: NDI Quartile 1, Least Deprived)"
+6,nice_is_mentioned[T.True],0.1293,0.006999999999999999,19.549,0.0,0.11599999999999999,0.142,0.13803148240415686,0.12299587213325469,0.15257664853700503,13.80%,12.30%,15.26%,0.129 (0.007),"13.80%
+(12.30%, 15.26%)",True,nice_is_mentioned,nice_is_mentionedTrue,nice_is_mentionedTrue,Warmth is Mentioned,(ref: Warmth Not Mentioned),4.0,"Warmth is Mentioned
+(ref: Warmth Not Mentioned)"
+7,thank_is_mentioned[T.True],0.0009,0.006,0.156,0.8759999999999999,-0.01,0.012,0.0009004051215273368,-0.009950166250831893,0.012072288866077807,0.09%,-1.00%,1.21%,0.001 (0.006),"0.09%
+(-1.00%, 1.21%)",True,thank_is_mentioned,thank_is_mentionedTrue,thank_is_mentionedTrue,Gratitude is Mentioned,(ref: Gratitude Not Mentioned),5.0,"Gratitude is Mentioned
+(ref: Gratitude Not Mentioned)"
+9,self_reliance_is_mentioned[T.True],0.051,0.006999999999999999,7.096,0.0,0.037000000000000005,0.065,0.05232289328320383,0.037693020838157176,0.06715902438419263,5.23%,3.77%,6.72%,0.051 (0.007),"5.23%
+(3.77%, 6.72%)",True,self_reliance_is_mentioned,self_reliance_is_mentionedTrue,self_reliance_is_mentionedTrue,Self-Reliance is Mentioned,(ref: Self-Reliance Not Mentioned),6.0,"Self-Reliance is Mentioned
+(ref: Self-Reliance Not Mentioned)"
+4,ctype_is_mentioned[T.True],0.0915,0.006999999999999999,12.665,0.0,0.077,0.106,0.0958167766925413,0.08004207639260041,0.11182187650653086,9.58%,8.00%,11.18%,0.091 (0.007),"9.58%
+(8.00%, 11.18%)",True,ctype_is_mentioned,ctype_is_mentionedTrue,ctype_is_mentionedTrue,Cancer Type is Mentioned,(ref: Cancer Type Not Mentioned),7.0,"Cancer Type is Mentioned
+(ref: Cancer Type Not Mentioned)"
+12,tx_type_is_mentioned[T.True],0.0637,0.006,11.187999999999999,0.0,0.053,0.075,0.06577261901123777,0.054429645119355996,0.07788415088463152,6.58%,5.44%,7.79%,0.064 (0.006),"6.58%
+(5.44%, 7.79%)",True,tx_type_is_mentioned,tx_type_is_mentionedTrue,tx_type_is_mentionedTrue,Treatment Type is Mentioned,(ref: Treatment Type Not Mentioned),8.0,"Treatment Type is Mentioned
+(ref: Treatment Type Not Mentioned)"
+8,insurance_type_is_mentioned[T.True],0.0138,0.006,2.294,0.022000000000000002,0.002,0.026000000000000002,0.013895659527321857,0.002002001334000303,0.02634094847344204,1.39%,0.20%,2.63%,0.014 (0.006),"1.39%
+(0.20%, 2.63%)",True,insurance_type_is_mentioned,insurance_type_is_mentionedTrue,insurance_type_is_mentionedTrue,Insurance is Mentioned,(ref: Insurance Not Mentioned),9.0,"Insurance is Mentioned
+(ref: Insurance Not Mentioned)"
+11,oop_type_is_mentioned[T.True],0.071,0.005,12.913,0.0,0.06,0.08199999999999999,0.07358122586835747,0.06183654654535964,0.08545580982954903,7.36%,6.18%,8.55%,0.071 (0.005),"7.36%
+(6.18%, 8.55%)",True,oop_type_is_mentioned,oop_type_is_mentionedTrue,oop_type_is_mentionedTrue,Out-of-Pocket Cost is Mentioned,(ref: Out-of-Pocket Cost Not Mentioned),10.0,"Out-of-Pocket Cost is Mentioned
+(ref: Out-of-Pocket Cost Not Mentioned)"
+10,battle_is_mentioned[T.True],0.1122,0.005,21.335,0.0,0.102,0.12300000000000001,0.11873658558892286,0.10738347172793339,0.1308844209474893,11.87%,10.74%,13.09%,0.112 (0.005),"11.87%
+(10.74%, 13.09%)",True,battle_is_mentioned,battle_is_mentionedTrue,battle_is_mentionedTrue,Militaristic Metaphors,(ref: Militaristic Metaphos Not Used),11.0,"Militaristic Metaphors
+(ref: Militaristic Metaphos Not Used)"
+5,brave_is_mentioned[T.True],0.1432,0.006,24.801,0.0,0.132,0.154,0.15396057070247804,0.1411083192672351,0.1664908867784396,15.40%,14.11%,16.65%,0.143 (0.006),"15.40%
+(14.11%, 16.65%)",True,brave_is_mentioned,brave_is_mentionedTrue,brave_is_mentionedTrue,Bravery is Mentioned,(ref: Bravery Not Mentioned),12.0,"Bravery is Mentioned
+(ref: Bravery Not Mentioned)"
+13,year_f[T.2011],0.1176,0.342,0.344,0.731,-0.5529999999999999,0.7879999999999999,0.12479410373032285,-0.4247784453708361,1.1989940372598835,12.48%,-42.48%,119.90%,0.118 (0.342),"12.48%
+(-42.48%, 119.90%)",,year_f[T.2011],year_f[T.2011],year_f[T.2011],2011,(ref: 2010),13.0,"2011
+(ref: 2010)"
+14,year_f[T.2012],0.0883,0.332,0.266,0.79,-0.563,0.7390000000000001,0.0923157676091857,-0.4305019954704583,1.0938406265983924,9.23%,-43.05%,109.38%,0.088 (0.332),"9.23%
+(-43.05%, 109.38%)",,year_f[T.2012],year_f[T.2012],year_f[T.2012],2012,(ref: 2010),14.0,"2012
+(ref: 2010)"
+15,year_f[T.2013],0.0192,0.33,0.057999999999999996,0.953,-0.627,0.6659999999999999,0.019385505332123465,-0.4658080245285159,0.9464359844275911,1.94%,-46.58%,94.64%,0.019 (0.330),"1.94%
+(-46.58%, 94.64%)",,year_f[T.2013],year_f[T.2013],year_f[T.2013],2013,(ref: 2010),15.0,"2013
+(ref: 2010)"
+16,year_f[T.2014],-0.1325,0.32899999999999996,-0.402,0.688,-0.778,0.513,-0.12409706589379688,-0.5406762592486296,0.6702945698405354,-12.41%,-54.07%,67.03%,-0.133 (0.329),"-12.41%
+(-54.07%, 67.03%)",,year_f[T.2014],year_f[T.2014],year_f[T.2014],2014,(ref: 2010),16.0,"2014
+(ref: 2010)"
+17,year_f[T.2015],-0.0484,0.32899999999999996,-0.147,0.883,-0.6940000000000001,0.597,-0.04724739019678903,-0.5004262279464551,0.8166606353305506,-4.72%,-50.04%,81.67%,-0.048 (0.329),"-4.72%
+(-50.04%, 81.67%)",,year_f[T.2015],year_f[T.2015],year_f[T.2015],2015,(ref: 2010),17.0,"2015
+(ref: 2010)"
+18,year_f[T.2016],0.1245,0.32899999999999996,0.37799999999999995,0.705,-0.521,0.77,0.13258202046024525,-0.4060736754165639,1.1597662537849152,13.26%,-40.61%,115.98%,0.124 (0.329),"13.26%
+(-40.61%, 115.98%)",,year_f[T.2016],year_f[T.2016],year_f[T.2016],2016,(ref: 2010),18.0,"2016
+(ref: 2010)"
+19,year_f[T.2017],-0.0893,0.32899999999999996,-0.271,0.7859999999999999,-0.735,0.556,-0.08542883893368602,-0.5204945410251058,0.7436837970197381,-8.54%,-52.05%,74.37%,-0.089 (0.329),"-8.54%
+(-52.05%, 74.37%)",,year_f[T.2017],year_f[T.2017],year_f[T.2017],2017,(ref: 2010),19.0,"2017
+(ref: 2010)"
+20,year_f[T.2018],-0.2022,0.32899999999999996,-0.614,0.539,-0.848,0.44299999999999995,-0.18306847470254262,-0.5717293827873403,0.5573723343417794,-18.31%,-57.17%,55.74%,-0.202 (0.329),"-18.31%
+(-57.17%, 55.74%)",,year_f[T.2018],year_f[T.2018],year_f[T.2018],2018,(ref: 2010),20.0,"2018
+(ref: 2010)"
+21,year_f[T.2019],-0.4035,0.32899999999999996,-1.225,0.221,-1.0490000000000002,0.242,-0.33202197320101046,-0.6497121381125215,0.2737941928161949,-33.20%,-64.97%,27.38%,-0.404 (0.329),"-33.20%
+(-64.97%, 27.38%)",,year_f[T.2019],year_f[T.2019],year_f[T.2019],2019,(ref: 2010),21.0,"2019
+(ref: 2010)"
+22,winsorized_goal,1.132e-05,1.23e-07,92.307,0.0,1.11e-05,1.1599999999999999e-05,1.1320064071451696e-05,1.1100061605207046e-05,1.1600067280292947e-05,0.00%,0.00%,0.00%,0.000 (0.000),"0.00%
+(0.00%, 0.00%)",,winsorized_goal,winsorized_goal,winsorized_goal,Goal Amount,,22.0,
+23,shares,0.0001,3.53e-06,29.405,0.0,9.68e-05,0.0,0.0001000050001667141,9.680468527117903e-05,0.0,0.01%,0.01%,0.00%,0.000 (0.000),"0.01%
+(0.01%, 0.00%)",,shares,shares,shares,Number of Shares,,23.0,
+24,num_contributors,0.0033,2.36e-05,138.168,0.0,0.003,0.003,0.00330545099444457,0.003004504503377081,0.003004504503377081,0.33%,0.30%,0.30%,0.003 (0.000),"0.33%
+(0.30%, 0.30%)",,num_contributors,num_contributors,num_contributors,Number of Contributors,,24.0,

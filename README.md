@@ -1,4 +1,6 @@
-Toolset used to perform the analysis in Silver et al (2020) *Association of Neighborhood Deprivation Index With 5 Success in Cancer Care Crowdfunding*.
+## Association of Neighborhood Deprivation Index With Success in Cancer Care Crowdfunding
+
+Toolset used to perform the analysis in Silver et al (2020) *Association of Neighborhood Deprivation Index With Success in Cancer Care Crowdfunding*.
 
 Authors: Silver ER, Truong HQ, Ostvar S, Hur C, & Tatonetti, NP
 

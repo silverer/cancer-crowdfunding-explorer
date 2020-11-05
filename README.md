@@ -1,5 +1,6 @@
-Toolset used to perform the analysis in Silver et al (2020) *Online crowdfunding maintains existing socioeconomic disparities in cancer care*.
+Toolset used to perform the analysis in Silver et al (2020) *Association of Neighborhood Deprivation Index With 5 Success in Cancer Care Crowdfunding*.
 
+Authors: Silver ER, Truong HQ, Ostvar S, Hur C, & Tatonetti, NP
 
 ### Installation
 
@@ -58,6 +59,8 @@ Note that you will need to add your own Census API key to ```src/tokens.py``` (s
 
 ### Authors
 
-* Han Q. Truong (https://github.com/ryanhantruong)
 * Elisabeth R. Silver (https://github.com/silverer)
+* Han Q. Truong (https://github.com/ryanhantruong)
 * Sassan Ostvar (https://github.com/sostvar)
+* Chin Hur
+* Nicholas P. Tatonetti

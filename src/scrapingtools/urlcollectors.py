@@ -14,14 +14,10 @@ from . import urlcleaning as uclean
 from . import waybackinterface as wbi
 from . import utils as utils
 
-
-# from scrapingtools.utils import log_message as print
-# import scrapingtools.urlcleaning as uclean
-# import scrapingtools.waybackinterface as wbi
-# import scrapingtools.utils as utils
+from .. import data_io
 
 GFM_SITEMAP_URL = "https://www.gofundme.com/sitemap.xml"
-SITEMAP_PARENTDIR = Path.cwd().parent
+SITEMAP_PARENTDIR = data_io.input_raw
 
 
 class URLCollector(object):
@@ -78,16 +74,17 @@ class URLCollector(object):
 
     def _load_sitemap(self, sitemap_directory):
         """ returns today's sitemap (downloads it if it doesn't exist) """
-        self.log("loading site data from " + self.gfm_sitemap_url)
+        self.log("[URLCollector] loading site data from " + self.gfm_sitemap_url)
         sitemap_path = sitemap_directory / "sitemap.xml"
         if not sitemap_path.exists():
             self.log(
-                "time map is out of date; retreiving today's data and saving to "
+                "[URLCollector] time map is out of date;"
+                + " retreiving today's data and saving to "
                 + str(sitemap_directory)
             )
             urllib.request.urlretrieve(self.gfm_sitemap_url, str(sitemap_path))
         else:
-            self.log("site map is up-to-date; no need to download")
+            self.log("[URLCollector] site map is up-to-date; no need to download")
         return sitemap_directory, sitemap_path
 
     def _unpack_sitemap(self, sitemap_directory):
@@ -97,7 +94,7 @@ class URLCollector(object):
         root = tree.getroot()
         savepath = dpath / "packets"
         if not savepath.exists():
-            self.log("loading packets...")
+            self.log("[URLCollector] loading packets...")
             savepath.mkdir()
             if self.use_tqdm:
                 root = self.tqdm(root, total=len(root))
@@ -117,7 +114,7 @@ class URLCollector(object):
                     urllib.request.urlretrieve(gz.text, str(filepath))
                     gzs.append(filepath)
         else:
-            self.log("site map packets already exist; no need to unpack.")
+            self.log("[URLCollector] site map packets already exist; no need to unpack.")
             gzs = [p for p in savepath.glob("*.gz") if p.is_file()]
         return gzs
 
@@ -128,7 +125,7 @@ class URLCollector(object):
             iterr = self.tqdm(iterr, total=len(unzipped))
         for gz, uz in iterr:
             if self.use_tqdm:
-                iterr.set_description("unzipping " + (gz.stem + gz.suffix))
+                iterr.set_description("[URLCollector] unzipping " + (gz.stem + gz.suffix))
             if gz.suffix != ".gz":
                 continue
             with gzip.open(str(gz), "r") as f_in, uz.open(mode="wb") as f_out:
@@ -167,10 +164,10 @@ class URLCollector(object):
         urls_df_l = []
         for fp in uz_filepaths:
             if self.use_tqdm:
-                uz_filepaths.set_description("parsing " + str(fp.stem))
+                uz_filepaths.set_description("[URLCollector] parsing " + str(fp.stem))
             urls_df_l.append(self._read_urls_from_xml_file(fp))
         urls_df = pd.concat(urls_df_l, ignore_index=True, sort=True)
-        self.log("{} urls loaded successfully".format(urls_df.shape[0]))
+        self.log("[URLCollector] {} urls loaded successfully".format(urls_df.shape[0]))
         urls_df.to_csv(tablepath, encoding="utf-8", index=False)
         return tablepath, urls_df
 
@@ -215,7 +212,7 @@ class WaybackURLCollector(object):
             dir = SITEMAP_PARENTDIR
         utils.verify_pathtype(dir)
         if not dir.exists():
-            warnings.warn("{} not exists, will create directory".format(dir))
+            warnings.warn("[WaybackURLCollector] {} not exists, will create directory".format(dir))
             dir.mkdir()
         today_wayback_folder = "wayback_" + datetime.datetime.now().strftime("%Y%m%d")
         savepath = dir / today_wayback_folder
@@ -257,11 +254,11 @@ class WaybackURLCollector(object):
         ):
             df_l = []
             for ipage in batch:
-                print(f"Querying page {ipage}")
+                print(f"[WaybackURLCollector] Querying page {ipage}")
                 query = self.domain_search_query(ipage)
                 df_l.append(wbi.pull_request(query, self.process_query))
             df_a = pd.concat(df_l, ignore_index=True, sort=True)
-            print(f"Saving batch {ibatch}")
+            print(f"[WaybackURLCollector] Saving batch {ibatch}")
             output_fpath = output_fdir / f"wayback_query_output_batch{ibatch}.csv"
             df_a.to_csv(output_fpath, encoding="utf-8", index=False)
             out_fpaths.append(output_fpath)
@@ -281,7 +278,7 @@ class WaybackURLCollector(object):
             sort=False,
         )
         fout = self.savepath / "wayback_urls_all_batches.csv"
-        print("Saving {}".format(str(fout)))
+        print("[WaybackURLCollector] Saving {}".format(str(fout)))
         url_table.to_csv(fout, index=False)
         return fout, url_table
 

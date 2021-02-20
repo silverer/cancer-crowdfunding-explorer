@@ -1,6 +1,6 @@
 from pathlib import Path
 
-gfm = Path().resolve().parent
+gfm = Path.cwd()/"data" # master folder to store all inputs and outputs
 # Move scraped .csv files to input_raw directory
 input_raw = gfm / "raw_data"
 input_cleaned = gfm / "data"

@@ -10,30 +10,17 @@ from collections import OrderedDict
 import pandas as pd
 from bs4 import BeautifulSoup
 
-# from scrapingtools.utils import log_message as print
-# import scrapingtools.utils as utils
-# import scrapingtools.waybackinterface as wbi
-# import scrapingtools.scrapers as scrapers
-# import scrapingtools.renderercontainer as renderercontainer
-
 from .utils import log_message as print
 from . import utils as utils
 from . import waybackinterface as wbi
 from . import scrapers as scrapers
-<<<<<<< HEAD
-from . import renderercontainer as rederercontainer
-
-# import .utils as utils
-# import waybackinterface as wbi
-# import scrapers as scrapers
-# import renderercontainer as rederercontainer
-=======
 from . import renderercontainer as renderercontainer
->>>>>>> 5e206344ad9081178693706170e97a0a881a60e3
+
+from .. import data_io
 
 # defaults
-OUTPATH = Path.cwd().parent / "scrape_output"
-URLTABLE_PATH = Path.cwd().parent / "wayback_20200219" / "master_urls_table.csv"
+OUTPATH = data_io.input_raw / "scrape_output"
+URLTABLE_PATH = data_io.input_raw / "wayback_20200219" / "master_urls_table.csv"
 URLTABLE_COLUMN = "cleaned_url"
 URLTABLE_COLUMN2 = "original_url"
 MAX_NUMBER_OF_SNAPSHOTS = 30

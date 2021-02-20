@@ -1,11 +1,12 @@
 from src.scrapingtools.scrapemanager import ScrapeManager
 from src.scrapingtools.urlcollectors import URLCollector, WaybackURLCollector
+from src import data_io
 from pathlib import Path
 
 # SCRAPE ON BOTH GFM AND WAYBACK MACHINE
 # create a table of all urls to scrape, only need to generate once
 tablepath, urls_df = URLCollector().create_url_table()
-wbcollector = WaybackURLCollector()
+wbcollector = WaybackURLCollector(start_year=2019,end_year=2021)
 wbtablepath, wburls_df = wbcollector.create_url_table()
 masterpath, master_df = wbcollector.compare_url_tables(urls_df, wburls_df)
 # start scraping
@@ -14,9 +15,9 @@ manager.deploy()
 
 
 # RESUMING A PREVIOUS SCRAPE SESSION
-tablepath = Path.cwd().parent / "wayback_20200220" / "master_urls_table.csv"
+tablepath = data_io.input_raw / "wayback_20200220" / "master_urls_table.csv"
 tablecolumn = "cleaned_url"
-savepath = Path.cwd().parent / "scrape_output"
+savepath = data_io.input_raw / "scrape_output"
 manager = ScrapeManager(
     urltable_path=tablepath, urltable_column=tablecolumn, savepath=savepath
 )

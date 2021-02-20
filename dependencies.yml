@@ -2,7 +2,6 @@ name: gfm
 channels:
   - anaconda
   - conda-forge
-  - conda-forge/label/cf201901
   - plotly
 dependencies:
   - python
@@ -20,7 +19,6 @@ dependencies:
   - geopandas
   - plotly-geo
   - scikit-learn
-  - selenium
   - ftfy
   - pip
   - scipy

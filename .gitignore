@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 src/hire_tokens.py
-=======
->>>>>>> 5e206344ad9081178693706170e97a0a881a60e3
 **/.ipynb_checkpoints/
 .DS_Store
 **/.DS_Store
@@ -14,3 +11,8 @@ notebooks/*.xlsx
 data/gfm/*.xlsx
 data/geolocations/*.xlsx
 data/geolocation/*.csv
+data/raw_data
+data/data
+data/output
+data/output_plots
+data/output_analysis_results

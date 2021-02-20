@@ -17,8 +17,11 @@ Anaconda users can use the included conda environment to assemble the Python 3 d
 However, Anaconda can take a really long time to solve the environment. We suggest to use virtualenv and pip to install the dependencies instead:
 
 ```pip install virtualenv```
+
 ```virtualenv gfm```
+
 ```source gfm/bin/activate```
+
 ```pip install -r requirements.txt```
 
 ---

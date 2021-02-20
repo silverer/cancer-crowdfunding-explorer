@@ -12,6 +12,7 @@ Anaconda users can use the included conda environment to assemble the Python 3 d
 
 ```conda env create -f dependencies.yml```
 
+```conda activate gfm```
 
 ---
 

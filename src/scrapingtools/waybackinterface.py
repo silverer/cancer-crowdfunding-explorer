@@ -5,6 +5,7 @@ import time
 import re
 from .utils import log_message as print
 from tqdm import tqdm
+from io import StringIO
 
 RETRY_MAX = 10  # times
 TIMEOUT = 150  # seconds
@@ -20,22 +21,28 @@ SEARCH_RESULT_HEADER = [
 ]
 
 IMPORTANCE_MATRIX = pd.DataFrame.from_dict(
-    {
-        "url": 1,
-        "last_donation_time": 1,
+    {   "url": 0,
+        "last_donation_time":1,
         "last_update_time": 1,
         "created_date": 4,
-        "location": 4,
+        "location_city": 4,
+        "location_country": 4,
+        "location_postalcode": 0,
+        "location_stateprefix": 1,
         "description": 1,
+        "poster": 1,
         "story": 4,
         "title": 2,
         "goal": 3,
+        "raised_amnt": 3,
+        "goal_amnt": 3,
+        "currency": 3,
         "tag": 2,
-        "status": 3,
-        "num_likes": 2,
+        "num_donors": 3,
+        "num_likes":2,
         "num_shares": 2,
         "charity_details": 1,
-        "error_message": 1,
+        "error_message": 0,
     },
     orient="index",
     columns=["importance_score"],
@@ -89,7 +96,7 @@ def _search_wayback(url_to_search, timeout=TIMEOUT):
     )
     print(f"Search for archives w query: {search_way_3}")
     search_page = requests.get(search_way_3, timeout=timeout)
-    search_results = pd.read_json(search_page.text, encoding="utf-8")
+    search_results = pd.read_json(StringIO(search_page.text), encoding="utf-8")
     if not search_results.empty:
         search_results = search_results.rename(columns=search_results.iloc[0, :]).drop(
             index=0

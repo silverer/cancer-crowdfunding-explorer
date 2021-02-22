@@ -1,18 +1,26 @@
 import unicodedata
 import re
+import json
 
 empty_row = {
     "url": "none",
     "last_donation_time": "none",
     "last_update_time": "none",
     "created_date": "none",
-    "location": "none",
+    "location_city": "none",
+    "location_country": "none",
+    "location_postalcode":"none",
+    "location_stateprefix":"none",
+    "poster":"none",
     "description": "none",
     "story": "none",
     "title": "none",
     "goal": "none",
+    "raised_amnt": "none",
+    "goal_amnt": "none",
+    "currency":"none",
     "tag": "none",
-    "status": "none",
+    "num_donors":"none",
     "num_likes": "none",
     "num_shares": "none",
     "charity_details": "none",
@@ -64,8 +72,52 @@ def not_found(soup):
         len(soup.find_all(string=re.compile("Campaign Not Found", re.IGNORECASE))) > 0
     )
 
+def extract_window_initial_state_script(soup):
+    script = soup.find('script',string=re.compile(r'window\.initialState = '))
+    # script.string has the structure of the window.initialState = {.....} ;
+    # need to remove "window.initialState =" and ";" at the end
+    window_initial_state  = re.sub('(window\.initialState = |;$)','', script.string)
+    initial_state_dict = json.loads(window_initial_state)
+    campaign_state_dict = initial_state_dict['feed']['campaign']
+    return campaign_state_dict
+
+def parse_info_from_window_initial_state_script(soup,row):
+    try:
+        campaign_state_dict = extract_window_initial_state_script(soup)
+        row["num_donors"] = str(campaign_state_dict["donation_count"])
+
+        location_container = campaign_state_dict['location']
+        row['location_city'] = location_container['city']
+        row['location_country'] = location_container['country']
+        if location_container['postal_code']!='':
+            row['location_postalcode'] = location_container['postal_code']
+        if location_container['state_prefix']!='':
+            row['location_stateprefix'] = location_container['state_prefix']
+
+        row['goal_amnt'] = str(campaign_state_dict['goal_amount'])
+        row['raised_amnt'] = str(campaign_state_dict['current_amount'])
+        row['currency'] = str(campaign_state_dict['currencycode'])
+
+        row['poster'] = campaign_state_dict['user_first_name'] + ' ' + campaign_state_dict['user_last_name']
+        row["title"]= campaign_state_dict['fund_name']
+        if campaign_state_dict['social_share_last_update'] != '':
+            row['last_update_time'] = campaign_state_dict['social_share_last_update']
+        row['created_date'] = campaign_state_dict['launch_date']
+
+        if str(campaign_state_dict['charity'])!='{}':
+            row["charity_details"] = str(campaign_state_dict['charity'])
+
+    except Exception as e:
+        print("[scrapers] Failed to extract <script> window.initialState </script> and info from here")
+        print("[scrapers] " + str(e))
+    return row
 
 def scrape_url_2015(soup, url):
+
+    row = dict(empty_row)
+    row['url'] =url
+    row = parse_info_from_window_initial_state_script(soup,row)
+
     try:
         heart_container = soup.find_all("div", {"class": re.compile("fave-num")})
         num_likes = heart_container[0].text
@@ -150,23 +202,20 @@ def scrape_url_2015(soup, url):
     except:
         charity_details = "none"
 
-    row = {
-        "url": url,
-        "last_donation_time": last_donation_time,
-        "last_update_time": last_update_time,
-        "created_date": created,
-        "location": location,
-        "description": description,
-        "story": story,
-        "title": title,
-        "goal": goal,
-        "tag": tag,
-        "status": status,
-        "num_likes": num_likes,
-        "num_shares": num_shares,
-        "charity_details": charity_details,
-        "error_message": "none",
-    }
+    row["last_donation_time"] = last_donation_time
+    row["description"] = description
+    row["story"] = story
+    row["goal"] =  goal
+    row["tag"] =  tag
+    row["num_likes"]= num_likes
+    row["num_shares"] = num_shares
+
+    if row["created_date"] == "none": row['created_date'] = created
+    if row["last_update_time"] == "none": row['last_update_time'] = last_update_time
+    if row["location_city"] == "none": row["location_city"] = location
+    if row["title"] == "none": row["title"] = title
+    if row["num_donors"] == "none": row["num_donors"] = status
+    if row["charity_details"] == "none":  row["charity_details"] =  charity_details
 
     try:
         row_encode = {
@@ -183,6 +232,11 @@ def scrape_url_2015(soup, url):
 
 
 def scrape_url_2017(soup, url):
+
+    row = dict(empty_row)
+    row['url'] =url
+    row = parse_info_from_window_initial_state_script(soup,row)
+
     try:  # done
         heart_container = soup.find_all("div", {"class": re.compile(r"heart fave-num")})
         num_likes = heart_container[0].text
@@ -278,23 +332,21 @@ def scrape_url_2017(soup, url):
         charity_details = charity_container[0].text
     except:
         charity_details = "none"
-    row = {
-        "url": url,
-        "last_donation_time": last_donation_time,
-        "last_update_time": last_update_time,
-        "created_date": created,
-        "location": location,
-        "description": description,
-        "story": story,
-        "title": title,
-        "goal": goal,
-        "tag": tag,
-        "status": status,
-        "num_likes": num_likes,
-        "num_shares": num_shares,
-        "charity_details": charity_details,
-        "error_message": "none",
-    }
+
+    row["last_donation_time"] = last_donation_time
+    row["description"] = description
+    row["story"] = story
+    row["goal"] =  goal
+    row["tag"] =  tag
+    row["num_likes"]= num_likes
+    row["num_shares"] = num_shares
+
+    if row["created_date"] == "none": row['created_date'] = created
+    if row["last_update_time"] == "none": row['last_update_time'] = last_update_time
+    if row["location_city"] == "none": row["location_city"] = location
+    if row["title"] == "none": row["title"] = title
+    if row["num_donors"] == "none": row["num_donors"] = status
+    if row["charity_details"] == "none":  row["charity_details"] =  charity_details
 
     try:
         row_encode = {
@@ -311,6 +363,11 @@ def scrape_url_2017(soup, url):
 
 
 def scrape_url_2018(soup, url):
+
+    row = dict(empty_row)
+    row['url'] =url
+    row = parse_info_from_window_initial_state_script(soup,row)
+
     try:
         heart_container = soup.find_all("div", {"class": re.compile(r"heart fave-num")})
         num_likes = heart_container[0].text
@@ -406,23 +463,20 @@ def scrape_url_2018(soup, url):
     except:
         charity_details = "none"
 
-    row = {
-        "url": url,
-        "last_donation_time": last_donation_time,
-        "last_update_time": last_update_time,
-        "created_date": created,
-        "location": location,
-        "description": description,
-        "story": story,
-        "title": title,
-        "goal": goal,
-        "tag": tag,
-        "status": status,
-        "num_likes": num_likes,
-        "num_shares": num_shares,
-        "charity_details": charity_details,
-        "error_message": "none",
-    }
+    row["last_donation_time"] = last_donation_time
+    row["description"] = description
+    row["story"] = story
+    row["goal"] =  goal
+    row["tag"] =  tag
+    row["num_likes"]= num_likes
+    row["num_shares"] = num_shares
+
+    if row["created_date"] == "none": row['created_date'] = created
+    if row["last_update_time"] == "none": row['last_update_time'] = last_update_time
+    if row["location_city"] == "none": row["location_city"] = location
+    if row["title"] == "none": row["title"] = title
+    if row["num_donors"] == "none": row["num_donors"] = status
+    if row["charity_details"] == "none":  row["charity_details"] =  charity_details
 
     try:
         row_encode = {
@@ -439,6 +493,10 @@ def scrape_url_2018(soup, url):
 
 
 def scrape_url_2013(soup, url):
+
+    row = dict(empty_row)
+    row['url'] =url
+    row = parse_info_from_window_initial_state_script(soup,row)
 
     try:  # retrieve number of friends instead
         heart_container = soup.find_all("p", {"class": re.compile(r"fby")})
@@ -528,23 +586,21 @@ def scrape_url_2013(soup, url):
     except:
         charity_details = "none"
 
-    row = {
-        "url": url,
-        "last_donation_time": last_donation_time,
-        "last_update_time": last_update_time,
-        "created_date": created,
-        "location": location,
-        "description": description,
-        "story": story,
-        "title": title,
-        "goal": goal,
-        "tag": tag,
-        "status": status,
-        "num_likes": num_likes,
-        "num_shares": num_shares,
-        "charity_details": charity_details,
-        "error_message": "none",
-    }
+    row["last_donation_time"] = last_donation_time
+    row["description"] = description
+    row["story"] = story
+    row["goal"] =  goal
+    row["tag"] =  tag
+    row["num_likes"]= num_likes
+    row["num_shares"] = num_shares
+
+    if row["created_date"] == "none": row['created_date'] = created
+    if row["last_update_time"] == "none": row['last_update_time'] = last_update_time
+    if row["location_city"] == "none": row["location_city"] = location
+    if row["title"] == "none": row["title"] = title
+    if row["num_donors"] == "none": row["num_donors"] = status
+    if row["charity_details"] == "none":  row["charity_details"] =  charity_details
+
 
     try:
         row_encode = {
@@ -561,6 +617,10 @@ def scrape_url_2013(soup, url):
 
 
 def scrape_url_2012(soup, url):
+
+    row = dict(empty_row)
+    row['url'] =url
+    row = parse_info_from_window_initial_state_script(soup,row)
 
     try:  # retrieve number of friends instead
         heart_container = soup.find_all("p", {"class": re.compile(r"fby")})
@@ -648,23 +708,20 @@ def scrape_url_2012(soup, url):
     except:
         charity_details = "none"
 
-    row = {
-        "url": url,
-        "last_donation_time": last_donation_time,
-        "last_update_time": last_update_time,
-        "created_date": created,
-        "location": location,
-        "description": description,
-        "story": story,
-        "title": title,
-        "goal": goal,
-        "tag": tag,
-        "status": status,
-        "num_likes": num_likes,
-        "num_shares": num_shares,
-        "charity_details": charity_details,
-        "error_message": "none",
-    }
+    row["last_donation_time"] = last_donation_time
+    row["description"] = description
+    row["story"] = story
+    row["goal"] =  goal
+    row["tag"] =  tag
+    row["num_likes"]= num_likes
+    row["num_shares"] = num_shares
+
+    if row["created_date"] == "none": row['created_date'] = created
+    if row["last_update_time"] == "none": row['last_update_time'] = last_update_time
+    if row["location_city"] == "none": row["location_city"] = location
+    if row["title"] == "none": row["title"] = title
+    if row["num_donors"] == "none": row["num_donors"] = status
+    if row["charity_details"] == "none":  row["charity_details"] =  charity_details
 
     try:
         row_encode = {
@@ -681,6 +738,10 @@ def scrape_url_2012(soup, url):
 
 
 def scrape_url_2014(soup, url):
+
+    row = dict(empty_row)
+    row['url'] =url
+    row = parse_info_from_window_initial_state_script(soup,row)
 
     try:  # retrieve number of friends instead
         heart_container = soup.find_all("p", {"class": "fb fby"})
@@ -777,23 +838,21 @@ def scrape_url_2014(soup, url):
     except:
         charity_details = "none"
 
-    row = {
-        "url": url,
-        "last_donation_time": last_donation_time,
-        "last_update_time": last_update_time,
-        "created_date": created,
-        "location": location,
-        "description": description,
-        "story": story,
-        "title": title,
-        "goal": goal,
-        "tag": tag,
-        "status": status,
-        "num_likes": num_likes,
-        "num_shares": num_shares,
-        "charity_details": charity_details,
-        "error_message": "none",
-    }
+    row["last_donation_time"] = last_donation_time
+    row["description"] = description
+    row["story"] = story
+    row["goal"] =  goal
+    row["tag"] =  tag
+    row["num_likes"]= num_likes
+    row["num_shares"] = num_shares
+
+    if row["created_date"] == "none": row['created_date'] = created
+    if row["last_update_time"] == "none": row['last_update_time'] = last_update_time
+    if row["location_city"] == "none": row["location_city"] = location
+    if row["title"] == "none": row["title"] = title
+    if row["num_donors"] == "none": row["num_donors"] = status
+    if row["charity_details"] == "none":  row["charity_details"] =  charity_details
+
 
     try:
         row_encode = {
@@ -811,81 +870,75 @@ def scrape_url_2014(soup, url):
 
 def scrape_url_2019(soup, url):
 
+    row = dict(empty_row)
+    row['url'] =url
+    row = parse_info_from_window_initial_state_script(soup,row)
+
     try:
         stats_container = soup.find_all("div", {"class": re.compile(r"social-stats")})[
             0
         ]
-        num_likes = re.findall(r"\d+\s?followers", stats_container.text)[0]
-        num_shares = re.findall(r"\d+\s?shares", stats_container.text)[0]
-        status = re.findall(r"\d+\s?donors", stats_container.text)[0]
+        row['num_likes'] = re.findall(r"\d+\s?followers", stats_container.text)[0]
+        row['num_shares'] = re.findall(r"\d+\s?shares", stats_container.text)[0]
+
     except:
         try:
             stats_container = soup.find_all(
                 "div", {"class": re.compile(r"m-social-stats")}
             )[0]
-            num_likes = re.findall(r"\d+\s?followers", stats_container.text)[0]
-            num_shares = re.findall(r"\d+\s?shares", stats_container.text)[0]
-            status = re.findall(r"\d+\s?donors", stats_container.text)[0]
+            row['num_likes'] = re.findall(r"\d+\s?followers", stats_container.text)[0]
+            row['num_shares'] = re.findall(r"\d+\s?shares", stats_container.text)[0]
         except:
-            num_likes = "none"
-            num_shares = "none"
-            status = "none"
+            print('[scrapers] failed to parse social media stats')
 
-    try:
-        organizer_container = soup.find_all(
-            "div", {"class": re.compile(r"campaign-members-main-organizer")}
-        )[0]
-        location = re.findall("Organizer(.+)", organizer_container.text, re.DOTALL)[0]
-    except:
-        location = "none"
-
-    try:
-        created_date_container = soup.find_all(
-            "span", {"class": re.compile(r"campaign-byline-created")}
-        )
-        created = created_date_container[0].text
-    except:
-        created = "none"
-
-    if created == "none":
-        try:  # done
+    if row['created_date'] == "none":
+        try:
             created_date_container = soup.find_all(
-                "span", {"class": re.compile(r"m-campaign-byline-created")}
+                "span", {"class": re.compile(r"campaign-byline-created")}
             )
-            created = created_date_container[0].text
+            row['created_date'] = created_date_container[0].text
         except:
-            created = "none"
+            print('[scrapers] failed to parse created_date')
 
-    if created == "none":
-        try:  # done
-            created_date_container = soup.find_all(
-                "span", {"class": re.compile(r"created-date")}
-            )
-            created = created_date_container[0].text
-        except:
-            created = "none"
+        if row['created_date']== "none":
+            try:  # done
+                created_date_container = soup.find_all(
+                    "span", {"class": re.compile(r"m-campaign-byline-created")}
+                )
+                row['created_date'] = created_date_container[0].text
+            except:
+                print('[scrapers] failed to parse created_date')
+
+        if row['created_date'] == "none":
+            try:  # done
+                created_date_container = soup.find_all(
+                    "span", {"class": re.compile(r"created-date")}
+                )
+                row['created_date'] = created_date_container[0].text
+            except:
+                print('[scrapers] failed to parse created_date')
 
     try:
         story_container = soup.find_all("div", {"class": re.compile("campaign-story")})
-        story = story_container[0].text
+        row['story'] = story_container[0].text
     except:
-        story = "none"
+        print('[scrapers] failed to parse story')
 
     try:
         description_container = soup.find_all("meta", {"name": "description"})
         description = description_container[0].text
         if description == "":
             description = "none"
+        row["description"] = description
     except:
-        description = "none"
+        print('[scrapers] failed to parse description')
 
-    try:
-        goal_container = soup.find_all(
-            "div", {"class": re.compile(r"campaign-sidebar-progress-meter")}
-        )
-        goal = goal_container[0].text
+    try:  # done
+        update_container = soup.find("header", {"class": "m-update-info"})
+        update_container = update_container.find("span",{"class":"heading-5 mr"})
+        row["last_update_time"] = update_container.text
     except:
-        goal = "none"
+        print('[scrapers] failed to parse last_update_time')
 
     try:  # done
         tag_container = soup.find_all(
@@ -893,13 +946,9 @@ def scrape_url_2019(soup, url):
         )
         tag = tag_container[0].text
         tag = tag.replace("View All", "").strip()
+        row["tag"] = tag
     except:
-        tag = "none"
-
-    try:  # done
-        title = soup.title.string
-    except:
-        title = "none"
+        print('[scrapers] failed to parse tag')
 
     try:  # done
         donator_container = soup.find_all(
@@ -912,41 +961,9 @@ def scrape_url_2019(soup, url):
         time_container = donator_meta_container.find_all("li")[1]
         last_donation_amount = amounts_container.text
         last_donation_time = time_container.text
+        row["last_donation_time"] = last_donation_time
     except:
-        last_donation_amount = "none"
-        last_donation_time = "none"
-
-    try:  # done
-        update_container = soup.find_all(
-            "header", {"class": re.compile(r"update-info")}
-        )
-        last_update_time = update_container[0].text
-    except:
-        last_update_time = "none"
-
-    try:
-        charity_container = soup.find_all("div", {"class": "charity-details"})
-        charity_details = charity_container[0].text
-    except:
-        charity_details = "none"
-
-    row = {
-        "url": url,
-        "last_donation_time": last_donation_time,
-        "last_update_time": last_update_time,
-        "created_date": created,
-        "location": location,
-        "description": description,
-        "story": story,
-        "title": title,
-        "goal": goal,
-        "tag": tag,
-        "status": status,
-        "num_likes": num_likes,
-        "num_shares": num_shares,
-        "charity_details": charity_details,
-        "error_message": "none",
-    }
+        print('[scrapers] failed to parse last_donation_time')
 
     try:
         row_encode = {

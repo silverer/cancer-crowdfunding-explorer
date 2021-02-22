@@ -27,6 +27,7 @@ MAX_NUMBER_OF_SNAPSHOTS = 30
 CAMPAIGNID_COLUMN = "cleaned_campaign_id"
 CAMPAIGNID_COLUMN2 = "campaign_id"
 SCRAPE_QUALITY_THRESHOLD = 17
+PRESENT_SCRAPE_QUALITY_THRESHOLD = 20
 
 
 class ScrapeManager(object):
@@ -47,6 +48,7 @@ class ScrapeManager(object):
         self.CAMPAIGNID_COLUMN = campaignid_column
         self.CAMPAIGNID_COLUMN2 = campaignid_column2
         self.SCRAPE_QUALITY_THRESHOLD = SCRAPE_QUALITY_THRESHOLD
+        self.PRESENT_SCRAPE_QUALITY_THRESHOLD = PRESENT_SCRAPE_QUALITY_THRESHOLD
         print("Loaded {}".format(urltable_path.stem))
         self.NEW_FILE_THRESH = 10000
         self.RENDER_CONTAINER = renderercontainer.RendererContainer()
@@ -303,7 +305,7 @@ class ScrapeManager(object):
             elif scrapers.not_found(soup):
                 err_msg = "present: campaign not found"
                 print(err_msg)
-            elif best_scraper_quality >= self.SCRAPE_QUALITY_THRESHOLD:
+            elif best_scraper_quality >= self.PRESENT_SCRAPE_QUALITY_THRESHOLD:
                 err_msg = "present: success"
                 scrape_sucess = True
                 print(err_msg)

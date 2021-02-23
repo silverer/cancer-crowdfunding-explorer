@@ -889,7 +889,7 @@ def scrape_url_2019(soup, url):
             row['num_likes'] = re.findall(r"\d+\s?followers", stats_container.text)[0]
             row['num_shares'] = re.findall(r"\d+\s?shares", stats_container.text)[0]
         except:
-            print('[scrapers] failed to parse social media stats')
+            print('[scrapers-2019] failed to parse social media stats')
 
     if row['created_date'] == "none":
         try:
@@ -898,7 +898,7 @@ def scrape_url_2019(soup, url):
             )
             row['created_date'] = created_date_container[0].text
         except:
-            print('[scrapers] failed to parse created_date')
+            print('[scrapers-2019] failed to parse created_date')
 
         if row['created_date']== "none":
             try:  # done
@@ -907,7 +907,7 @@ def scrape_url_2019(soup, url):
                 )
                 row['created_date'] = created_date_container[0].text
             except:
-                print('[scrapers] failed to parse created_date')
+                print('[scrapers-2019] failed to parse created_date')
 
         if row['created_date'] == "none":
             try:  # done
@@ -916,13 +916,13 @@ def scrape_url_2019(soup, url):
                 )
                 row['created_date'] = created_date_container[0].text
             except:
-                print('[scrapers] failed to parse created_date')
+                print('[scrapers-2019] failed to parse created_date')
 
     try:
         story_container = soup.find_all("div", {"class": re.compile("campaign-story")})
         row['story'] = story_container[0].text
     except:
-        print('[scrapers] failed to parse story')
+        print('[scrapers-2019] failed to parse story')
 
     try:
         description_container = soup.find_all("meta", {"name": "description"})
@@ -931,14 +931,14 @@ def scrape_url_2019(soup, url):
             description = "none"
         row["description"] = description
     except:
-        print('[scrapers] failed to parse description')
+        print('[scrapers-2019] failed to parse description')
 
     try:  # done
         update_container = soup.find("header", {"class": "m-update-info"})
         update_container = update_container.find("span",{"class":"heading-5 mr"})
         row["last_update_time"] = update_container.text
     except:
-        print('[scrapers] failed to parse last_update_time')
+        print('[scrapers-2019] failed to parse last_update_time')
 
     try:  # done
         tag_container = soup.find_all(
@@ -948,7 +948,7 @@ def scrape_url_2019(soup, url):
         tag = tag.replace("View All", "").strip()
         row["tag"] = tag
     except:
-        print('[scrapers] failed to parse tag')
+        print('[scrapers-2019] failed to parse tag')
 
     try:  # done
         donator_container = soup.find_all(
@@ -963,7 +963,7 @@ def scrape_url_2019(soup, url):
         last_donation_time = time_container.text
         row["last_donation_time"] = last_donation_time
     except:
-        print('[scrapers] failed to parse last_donation_time')
+        print('[scrapers-2019] failed to parse last_donation_time')
 
     try:
         row_encode = {

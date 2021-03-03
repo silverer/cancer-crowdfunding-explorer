@@ -96,7 +96,10 @@ def _search_wayback(url_to_search, timeout=TIMEOUT):
     )
     print(f"Search for archives w query: {search_way_3}")
     search_page = requests.get(search_way_3, timeout=timeout)
-    search_results = pd.read_json(StringIO(search_page.text), encoding="utf-8")
+    search_results = pd.read_json(StringIO(search_page.text),
+                                  orient="columns",
+                                  typ="frame",
+                                  encoding="utf-8")
     if not search_results.empty:
         search_results = search_results.rename(columns=search_results.iloc[0, :]).drop(
             index=0
@@ -114,7 +117,7 @@ def search_wayback(url_to_search, timeout=TIMEOUT):
 def clean_wayback_search_results(queryoutput):
     parsed_urls = queryoutput.original.apply(lambda x: up.urlsplit(x))
     parsed_urls = pd.DataFrame.from_records(
-        parsed_urls,
+        parsed_urls.tolist(),
         columns=["_scheme", "_domain", "_path", "_query", "_fragment"],
         index=parsed_urls.index,
     ).join(queryoutput, how="left")

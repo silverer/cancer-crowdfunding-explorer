@@ -117,7 +117,7 @@ def search_wayback(url_to_search, timeout=TIMEOUT):
 def clean_wayback_search_results(queryoutput):
     parsed_urls = queryoutput.original.apply(lambda x: up.urlsplit(x))
     parsed_urls = pd.DataFrame.from_records(
-        parsed_urls,
+        parsed_urls.tolist(),
         columns=["_scheme", "_domain", "_path", "_query", "_fragment"],
         index=parsed_urls.index,
     ).join(queryoutput, how="left")

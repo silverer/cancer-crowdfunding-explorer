@@ -413,17 +413,17 @@ class ScrapeManager(object):
 
     def create_gfm_urls_for_search_from_tablerow(self, w_url):
         urls_to_search = [w_url[self.URLTABLE_COLUMN]]
-        if self.URLTABLE_COLUMN2:
+        if self.URLTABLE_COLUMN2 and not pd.isna(w_url[self.URLTABLE_COLUMN2]):
             # there's an extra url column we can include
             urls_to_search.append(w_url[self.URLTABLE_COLUMN2])
-        if self.CAMPAIGNID_COLUMN:
+        if self.CAMPAIGNID_COLUMN and not pd.isna(w_url[self.CAMPAIGNID_COLUMN]):
             urls_to_search.append(
                 "http://www.gofundme.com/" + w_url[self.CAMPAIGNID_COLUMN]
             )
             urls_to_search.append(
                 "http://www.gofundme.com/f/" + w_url[self.CAMPAIGNID_COLUMN]
             )
-        if self.CAMPAIGNID_COLUMN2:
+        if self.CAMPAIGNID_COLUMN2 and not pd.isna(w_url[self.CAMPAIGNID_COLUMN2]):
             urls_to_search.append(
                 "http://www.gofundme.com/" + w_url[self.CAMPAIGNID_COLUMN2]
             )

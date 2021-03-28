@@ -96,10 +96,7 @@ def _search_wayback(url_to_search, timeout=TIMEOUT):
     )
     print(f"Search for archives w query: {search_way_3}")
     search_page = requests.get(search_way_3, timeout=timeout)
-    search_results = pd.read_json(StringIO(search_page.text),
-                                  orient="columns",
-                                  typ="frame",
-                                  encoding="utf-8")
+    search_results = pd.read_json(StringIO(search_page.text), encoding="utf-8")
     if not search_results.empty:
         search_results = search_results.rename(columns=search_results.iloc[0, :]).drop(
             index=0
@@ -117,7 +114,7 @@ def search_wayback(url_to_search, timeout=TIMEOUT):
 def clean_wayback_search_results(queryoutput):
     parsed_urls = queryoutput.original.apply(lambda x: up.urlsplit(x))
     parsed_urls = pd.DataFrame.from_records(
-        parsed_urls.tolist(),
+        parsed_urls,
         columns=["_scheme", "_domain", "_path", "_query", "_fragment"],
         index=parsed_urls.index,
     ).join(queryoutput, how="left")
@@ -219,7 +216,20 @@ def choose_first_path(x):
 
 
 def extract_campaign_id_from_gfm_url(x):
-    return up.urlsplit(x).path.split("/")[-1]
+    path_components = up.urlsplit(x).path.split("/")
+    if 'f' in path_components and len(path_components) >= 3:
+        #https://www.gofundme.com/f/cid/sign-in
+        # path_components = ['','f','cid','sign-in']
+        #https://www.gofundme.com/f/cid
+        #path_components = ['','f','cid']
+        campaign_id = path_components[2]
+    elif 'f' not in path_components and len(path_components) == 3:
+        #https://www.gofundme.com/cid/sign-in
+        #path_components = ['','cid','sign-in']
+        campaign_id = path_components[1]
+    else:
+        campaign_id = path_components[-1]
+    return campaign_id
 
 
 def remove_special_char_in_beginning(x):

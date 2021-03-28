@@ -884,8 +884,8 @@ def scrape_url_2019(soup, url):
             0
         ]
         text = _unidecode(stats_container.text)
-        row['num_likes'] = re.findall(r"(\d+([.]\d+K?)?)\s?followers", text)[0]
-        row['num_shares'] = re.findall(r"(\d+([.]\d+K?)?)\s?shares", text)[0]
+        row['num_likes'] = re.findall(r"(\d+([.]\d+K?)?)\s?followers", text)[0][0]
+        row['num_shares'] = re.findall(r"(\d+([.]\d+K?)?)\s?shares", text)[0][0]
 
     except:
         try:
@@ -893,8 +893,8 @@ def scrape_url_2019(soup, url):
                 "div", {"class": re.compile(r"m-social-stats")}
             )[0]
             text = _unidecode(stats_container.text)
-            row['num_likes'] = re.findall(r"(\d+([.]\d+K?)?)\s?followers", text)[0]
-            row['num_shares'] = re.findall(r"(\d+([.]\d+K?)?)\s?shares", text)[0]
+            row['num_likes'] = re.findall(r"(\d+([.]\d+K?)?)\s?followers", text)[0][0]
+            row['num_shares'] = re.findall(r"(\d+([.]\d+K?)?)\s?shares", text)[0][0]
         except:
             print('[scrapers-2019] failed to parse social media stats')
 

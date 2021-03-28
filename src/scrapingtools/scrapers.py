@@ -867,6 +867,11 @@ def scrape_url_2014(soup, url):
 
     return row_encode
 
+def _unidecode(x):
+    # x is a str with weird unicode encodings
+    # ex 1.6K\xa0donors1.9K\xa0shares1.5K\xa0followers
+    # output '1.6K donors1.9K shares1.5K followers'
+    return unicodedata.normalize("NFKD",x)
 
 def scrape_url_2019(soup, url):
 
@@ -878,16 +883,18 @@ def scrape_url_2019(soup, url):
         stats_container = soup.find_all("div", {"class": re.compile(r"social-stats")})[
             0
         ]
-        row['num_likes'] = re.findall(r"\d+\s?followers", stats_container.text)[0]
-        row['num_shares'] = re.findall(r"\d+\s?shares", stats_container.text)[0]
+        text = _unidecode(stats_container.text)
+        row['num_likes'] = re.findall(r"\d+\s?followers", text)[0]
+        row['num_shares'] = re.findall(r"\d+\s?shares", text)[0]
 
     except:
         try:
             stats_container = soup.find_all(
                 "div", {"class": re.compile(r"m-social-stats")}
             )[0]
-            row['num_likes'] = re.findall(r"\d+\s?followers", stats_container.text)[0]
-            row['num_shares'] = re.findall(r"\d+\s?shares", stats_container.text)[0]
+            text = _unidecode(stats_container.text)
+            row['num_likes'] = re.findall(r"\d+\s?followers", text)[0]
+            row['num_shares'] = re.findall(r"\d+\s?shares", text)[0]
         except:
             print('[scrapers-2019] failed to parse social media stats')
 

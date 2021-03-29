@@ -223,7 +223,7 @@ def extract_campaign_id_from_gfm_url(x):
         #https://www.gofundme.com/f/cid
         #path_components = ['','f','cid']
         campaign_id = path_components[2]
-    elif 'f' not in path_components and len(path_components) == 3:
+    elif 'f' not in path_components and len(path_components) >= 2:
         #https://www.gofundme.com/cid/sign-in
         #path_components = ['','cid','sign-in']
         campaign_id = path_components[1]

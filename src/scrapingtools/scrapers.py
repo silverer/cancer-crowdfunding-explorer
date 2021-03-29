@@ -84,6 +84,7 @@ def extract_window_initial_state_script(soup):
 def parse_info_from_window_initial_state_script(soup,row):
     try:
         campaign_state_dict = extract_window_initial_state_script(soup)
+        campaign_state_dict_keys = list(campaign_state_dict.keys())
         row["num_donors"] = str(campaign_state_dict["donation_count"])
 
         location_container = campaign_state_dict['location']
@@ -100,8 +101,9 @@ def parse_info_from_window_initial_state_script(soup,row):
 
         row['poster'] = campaign_state_dict['user_first_name'] + ' ' + campaign_state_dict['user_last_name']
         row["title"]= campaign_state_dict['fund_name']
-        if campaign_state_dict['social_share_last_update'] != '':
-            row['last_update_time'] = campaign_state_dict['social_share_last_update']
+        if 'social_share_last_update' in campaign_state_dict_keys:
+            if campaign_state_dict['social_share_last_update'] != '':
+                row['last_update_time'] = campaign_state_dict['social_share_last_update']
         row['created_date'] = campaign_state_dict['launch_date']
 
         if str(campaign_state_dict['charity'])!='{}':

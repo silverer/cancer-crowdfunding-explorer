@@ -23,6 +23,9 @@ class RendererContainer(object):
             self.renderer = webdriver.Chrome()
         return self.renderer
 
+    def reinitiate_renderer(self):
+        self.renderer = webdriver.Chrome()
+
     def render(self, url):
         retry = True
         retry_count = 0
@@ -37,7 +40,15 @@ class RendererContainer(object):
                 if campaign_page.text is None: raise Exception()
                 retry = False
             except Exception as e:
-                print("[rendercontainer] " + str(e))
+                err_msg = str(e)
+                if 'chrome not reachable' in err_msg or 'window was already closed' in err_msg:
+                    print("[rendercontainer] " + err_msg)
+                    print("[rendercontainer] start a new chrome session")
+                    self.reinitiate_renderer()
+                    print("[rendercontainer] finished starting new chrome session")
+                else:
+                    print("[rendercontainer] " + err_msg)
+
                 if retry_count < RETRY_MAX:
                     retry = True
                     print(f"[rendercontainer] sleep {SLEEP} secs before retrying request")

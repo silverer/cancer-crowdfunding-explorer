@@ -89,12 +89,17 @@ __window_encoding_dict = {"num_donors":"donation_count",
 "title":'fund_name',
 'last_update_time': 'social_share_last_update',
 'created_date':'launch_date',
-"charity_details":'charity'}
+"charity_details":'charity',
+'location':'location',
+'poster':'poster',
+'num_shares':'social_share_total',
+'num_likes':'campaign_hearts',
+'story':'fund_description'}
 
 
-__window_location_encoding_dict = {'location_city':'city'
-'location_country':'country'
-'location_postalcode':'postal_code'
+__window_location_encoding_dict = {'location_city':'city',
+'location_country':'country',
+'location_postalcode':'postal_code',
 'location_stateprefix':'state_prefix'}
 
 def __parse_location_container_in_window(location_container, row):
@@ -105,26 +110,31 @@ def __parse_location_container_in_window(location_container, row):
             if (val != '') or (val != '{}'): row[row_k] = val
     return row
 
+def __parse_poster(campaign_state_dict,campaign_state_dict_keys,row):
+    val = ''
+    for k in ['user_first_name','user_last_name']:
+        if k in campaign_state_dict_keys:
+            val += ' ' + str(campaign_state_dict[k]).strip()
+    val = val.strip()
+    if val != '': row['poster'] = val
+    return row
+
 def parse_info_from_window_initial_state_script(soup,row):
     try:
         campaign_state_dict = extract_window_initial_state_script(soup)
         campaign_state_dict_keys = list(campaign_state_dict.keys())
 
         for row_k,campaign_k in __window_encoding_dict.items():
-            if campaign_k in campaign_state_dict_keys:
+            if row_k == 'poster':
+                row = __parse_poster(campaign_state_dict,campaign_state_dict_keys,row)
+            elif campaign_k in campaign_state_dict_keys:
                 if campaign_k == 'location':
                     row = __parse_location_container_in_window(campaign_state_dict['location'],row)
-                elif campaign_k == 'poster':
-                    poster = ' '.join([str(campaign_state_dict[k])
-                                       for k in ('user_first_name','user_last_name')
-                                       if k in campaign_state_dict_keys]).strip()
-                    if poster != '':
-                        row['poster'] = poster
                 else:
                     val =  str(campaign_state_dict[campaign_k])
-                    if (val != '') or (val != '{}'):
-                        row[row_k] = str(campaign_state_dict[campaign_k])
-                        
+                    if (val != '') and (val != '{}'):
+                        row[row_k] = val
+
     except Exception as e:
         print("[scrapers] Failed to extract <script> window.initialState </script> and info from here")
         print("[scrapers] " + str(e))

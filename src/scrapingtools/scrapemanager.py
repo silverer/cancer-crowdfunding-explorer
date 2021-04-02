@@ -146,7 +146,8 @@ class ScrapeManager(object):
 
     def _wayback_scrape(self, url_to_scrape):
         msg = "wayback: none"
-        campaign_page = wbi.get_campaign_page(url_to_scrape)
+        #campaign_page = wbi.get_campaign_page(url_to_scrape)
+        campaign_page = self.RENDER_CONTAINER.render(url_to_scrape)
         if campaign_page is None:
             msg = "wayback: request failed"
             row = scrapers.empty_url_row(url_to_scrape)

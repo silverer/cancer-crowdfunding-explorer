@@ -107,7 +107,7 @@ def __parse_location_container_in_window(location_container, row):
     for row_k,location_k in __window_location_encoding_dict.items():
         if location_k in location_container_keys:
             val =  str(location_container[location_k])
-            if (val != '') or (val != '{}'): row[row_k] = val
+            if (val != '') and (val != '{}'): row[row_k] = val
     return row
 
 def __parse_poster(campaign_state_dict,campaign_state_dict_keys,row):
@@ -131,7 +131,7 @@ def parse_info_from_window_initial_state_script(soup,row):
                 if campaign_k == 'location':
                     row = __parse_location_container_in_window(campaign_state_dict['location'],row)
                 else:
-                    val =  str(campaign_state_dict[campaign_k])
+                    val =  str(campaign_state_dict[campaign_k]).strip()
                     if (val != '') and (val != '{}'):
                         row[row_k] = val
 

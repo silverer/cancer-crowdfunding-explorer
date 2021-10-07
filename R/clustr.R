@@ -1,12 +1,16 @@
 library(tidyverse)
 library(dplyr)
 library(stats)
+
 #Change this to local filepath
-setwd("~/Documents/cancer-crowdfunding-explorer")
+# repor.dir should lead to root of Git repo (cancer-crowdfunding-explorer)
+repo.dir <- dirname(dirname(rstudioapi::getSourceEditorContext()$path))
+setwd(repo.dir)
 
 census_data_path <- "data/census/"
 #NOTE: Run get_census_data.ipynb first to generate the acs_five_year_est.csv file
 df <- read.csv(paste(census_data_path, "acs_five_year_est.csv", sep=''))
+
 #citations for PCA w/one factor & included vars: 
 #https://www.ncbi.nlm.nih.gov/pubmed/17031568
 #https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3261293/
@@ -40,7 +44,7 @@ variance_exp_full <- importance_full[3, 1]
 
 #remove home_owners, percent_crowding, percent_vacant_units, percent_black,
 #no_car, percent_public_assist, and percent_mgmt_art_sci for low loadings
-pca_df_2 <- select(pca_df, -c("home_owners", "percent_crowding", "no_car", "percent_vacant_units",
+pca_df_2 <- dplyr::select(pca_df, -c("home_owners", "percent_crowding", "no_car", "percent_vacant_units",
                               "percent_black","percent_public_assist",
                               "percent_mgmt_art_sci"))
 pca_df_2.results <- prcomp(pca_df_2, center=TRUE, scale.=TRUE)
@@ -79,9 +83,12 @@ for(i in(1:length(vars))){
   
   new_col <- paste('weighted_',vars[i], sep='')
   new_colnames[i] <- new_col
-  print(factor_loadings[vars[i], 'PC1'])
-  new_df[new_col] <- new_df[vars[i]] * factor_loadings[vars[i], 'PC1']
+  factor_loading_weight_col <- "factor_loadings_reduced"
+  print(factor_loadings[vars[i], factor_loading_weight_col])
+  new_df[new_col] <- new_df[vars[i]] * factor_loadings[vars[i], factor_loading_weight_col] 
 }
+
+new_df <- new_df %>% arrange(state_county_fips)
 write.csv(new_df, paste(census_data_path, 'census_w_factor_weights_TEST.csv', sep=''))
 
 

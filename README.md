@@ -51,9 +51,7 @@ Note that you will need to add your own Census API key to ```src/tokens.py``` (s
 
 ##### GoFundMe data
 
-  * After scraping the sitemap, add the resulting .csv files to the directory ```data_io.input_raw/gfm``` and run ```notebooks/Make master tables.ipynb```. This notebook excludes duplicate URLs and poor-quality scrapes from the Wayback Machine.
-
-  * Once the master table (all campaigns) has been made, run ```notebooks/Clean master dataset.ipynb```. This notebook excludes non-US campaigns, non-cancer campaigns (based on keyword search), campaigns with tag other than "Medical", campaigns with no year, and duplicate campaigns based on title, year, and location. This notebook also parses information into standardized formats (e.g., amount raised, contributors, number of likes, etc.) Finally, this notebook generates a spreadsheet of unique locations that will be geocoded.
+  * After scraping the sitemap, add the resulting .csv files to the directory ```data_io.input_raw/gfm``` and run ```notebooks/Make master tables.ipynb```. This notebook excludes duplicate URLs and poor-quality scrapes from the Wayback Machine. In addition, this notebook excludes non-US campaigns, non-cancer campaigns (based on keyword search), campaigns with tag other than "Medical", campaigns with no year, and duplicate campaigns based on title, year, and location. This notebook also parses information into standardized formats (e.g., amount raised, contributors, number of likes, etc.) Finally, this notebook generates a spreadsheet of unique locations that will be geocoded.
 
 ##### Census data
   * After collecting and saving Census data, run the principal components analysis (PCA) in R using ```R/clustr.R```. This script runs a PCA in two steps, as described in Messer et al., 2006 (https://www.ncbi.nlm.nih.gov/pubmed/17031568). The PCA outputs are then used to calculate a Neighborhood Deprivation Index, which is split into quartiles in ```notebooks/assign locations and text indicators.ipynb``` (see below).

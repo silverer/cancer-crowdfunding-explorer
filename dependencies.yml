@@ -24,5 +24,6 @@ dependencies:
   - scipy
   - statsmodels
   - geocoder
+  - xlsxwriter
   - pip:
     - PyQt5==5.8.2

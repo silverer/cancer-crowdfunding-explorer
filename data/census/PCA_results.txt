@@ -1,29 +1,29 @@
 Full PCA
                       factor_loadings_full
-unemployment_rate                0.3138916
-percent_poverty                  0.3902746
-no_health_insurance              0.2723708
-home_owners                     -0.1466433
-percent_crowding                 0.2141011
-no_car                           0.2410645
-percent_vacant_units             0.0764555
-ed_percent_highschool           -0.3369880
-has_internet                    -0.3147432
-percent_black                    0.2267741
-percent_single_parent            0.2795587
-percent_less_35k                 0.3432716
-percent_public_assist            0.1640639
-percent_mgmt_art_sci            -0.2381488
-Full PCA percent of variance explained: [1] 0.38573
+unemployment_rate               0.32452636
+percent_poverty                 0.40563314
+no_health_insurance             0.25318026
+home_owners                    -0.09399814
+percent_crowding                0.18665200
+no_car                          0.23264801
+percent_vacant_units            0.15752337
+ed_percent_highschool          -0.26591665
+has_internet                   -0.36404272
+percent_black                   0.19986400
+percent_single_parent           0.14453648
+percent_less_35k                0.40350119
+percent_public_assist           0.17602185
+percent_mgmt_art_sci           -0.29250425
+Full PCA percent of variance explained: [1] 0.32896
 
 Reduced PCA
                       factor_loadings_reduced
-unemployment_rate                   0.3447508
-percent_poverty                     0.4533945
-no_health_insurance                 0.3178677
-ed_percent_highschool              -0.4036971
-has_internet                       -0.3888786
-percent_single_parent               0.2913102
-percent_less_35k                    0.4189044
+unemployment_rate                   0.3458107
+percent_poverty                     0.4624324
+no_health_insurance                 0.2802027
+ed_percent_highschool              -0.3319116
+has_internet                       -0.4487226
+percent_single_parent               0.1994123
+percent_less_35k                    0.4865954
 
-Percent of variance explained: [1] 0.59253
+Percent of variance explained: [1] 0.50186

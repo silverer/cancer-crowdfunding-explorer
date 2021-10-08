@@ -100,3 +100,4 @@ webencodings==0.5.1
 widgetsnbextension==3.5.1
 xlrd==2.0.1
 zipp==3.4.0
+xlsxwriter==3.0.1

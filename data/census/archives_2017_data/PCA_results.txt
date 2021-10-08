@@ -1,0 +1,29 @@
+Full PCA
+                      factor_loadings_full
+unemployment_rate                0.3138916
+percent_poverty                  0.3902746
+no_health_insurance              0.2723708
+home_owners                     -0.1466433
+percent_crowding                 0.2141011
+no_car                           0.2410645
+percent_vacant_units             0.0764555
+ed_percent_highschool           -0.3369880
+has_internet                    -0.3147432
+percent_black                    0.2267741
+percent_single_parent            0.2795587
+percent_less_35k                 0.3432716
+percent_public_assist            0.1640639
+percent_mgmt_art_sci            -0.2381488
+Full PCA percent of variance explained: [1] 0.38573
+
+Reduced PCA
+                      factor_loadings_reduced
+unemployment_rate                   0.3447508
+percent_poverty                     0.4533945
+no_health_insurance                 0.3178677
+ed_percent_highschool              -0.4036971
+has_internet                       -0.3888786
+percent_single_parent               0.2913102
+percent_less_35k                    0.4189044
+
+Percent of variance explained: [1] 0.59253
